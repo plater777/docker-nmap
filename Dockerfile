@@ -1,11 +1,11 @@
-FROM debian:stable-slim
+FROM alpine
 
 MAINTAINER Santiago Platero (https://github.com/plater777)
 
-RUN apt-get update && \
-  apt-get install -y nmap && \
-  apt-get autoclean
+RUN apk update && \
+	apk add --no-cache nmap && \
+	rm -f /tmp/* /etc/apk/cache/*
 
-ENTRYPOINT ["nmap"]
+	ENTRYPOINT ["nmap"]
 
 CMD ["--help"]
